@@ -1,0 +1,67 @@
+(defwidget calender []
+    ;; (label :class "calender" 
+    ;;        :text "Hello World!"
+    ;; )
+    (box :class "calender" :orientation "v" :spacing 30 :space-evenly false
+        (box :orientation "h" :spacing 30 :space-evenly false
+
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+        )
+        (box :orientation "h" :spacing 30 :space-evenly false
+
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+        )
+        (box :orientation "h" :spacing 30 :space-evenly false
+
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+        )
+        (box :orientation "h" :spacing 30 :space-evenly false
+
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+        )
+        (box :orientation "h" :spacing 30 :space-evenly false
+
+            (label :text "1")
+            (label :text "1")
+            (label :text "1")
+        )
+    )
+)
+
+(defwindow calender 
+    :monitor 0
+    :windowtype "dock"
+    :geometry (geometry 
+        :x "0%"
+        :y "60px"
+        :width "233px"
+        :height "233px"
+        ;; :anchor "top center")
+        :anchor "left center")
+    :reserve (struts :side "top" :distance "4%")
+    (calender)
+)

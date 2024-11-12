@@ -4,7 +4,7 @@
 
 $bg: #24283b;
 $bg_dark: #1f2335;
-$bg_highlight: #292e42;
+$bg_highlight: #2F334C;
 $blue: #7aa2f7;
 $blue0: #3d59a1;
 $blue1: #2ac3de;
@@ -35,36 +35,48 @@ $git-add: #449dab;
 $git-change: #6183bb;
 $git-delete: #914c54;
 
-// Global Styles
 .bar {
   background-color: $bg;
-  color: #b0b4bc;
-  padding: 10px;
-  border-radius: 20px;
+  color: $fg;
+  // padding: 10px;
+  border-radius: 15px;
+  border-color: $bg_dark
 }
 
-// Styles on classes (see eww.yuck for more information)
-
-.workspaces button:hover {
+.muted_source-volume {
   color: $red1;
-  background-color: $bg_highlight;
 }
 
-.active {
-  color: $red1;
+.source-volume {
+  color: $blue;
 }
 
 .datetime {
   font-size: 16px;
-  margin: 0;
 }
 
 .pulseaudio {
-  background-color: $bg;
-  border-radius: 20px
+  padding: 10px;
+}
+
+button {
+  border-radius: 20px;
 }
 
 button:hover {
   border-radius: 20px;
   background-color: $bg_highlight;
+  transition: 0.7s;
+}
+
+.shutdown {
+  color: $red;
+}
+
+.reboot {
+  color: $yellow;
+}
+
+.sink-volume {
+  color: $cyan;
 }

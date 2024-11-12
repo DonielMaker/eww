@@ -26,13 +26,13 @@
 )
 
 (defwidget powermenu []
-    (box
-        (button :onclick "shutdown now"
-            (label :text "⏻ ")
+    (box :space-evenly false
+        (button :onclick "shutdown now" :width 40
+            (label :text "⏻" :class "shutdown")
         )
-        ;; (button :onclick "sudo reboot now"
-        ;;     (label :text "")
-        ;; )
+        (button :onclick "reboot" :width 40
+            (label :text " " :class "reboot")
+        )
     )
 )
 
@@ -41,43 +41,27 @@
             :orientation "h" 
             :halign "center"
             :onclick "pavucontrol &"
-        (box :space-evenly false
-            (label :text "${sink-volume}%   |")
-            (label :text " ${source-volume}% " :unindent false)
-            (label :class {mute-status ? "active" : "inactive"} 
-                   :text {mute-status ? " ": " "})
+        (box :space-evenly false :spacing 5
+            (label :text "${sink-volume}%  " :class "sink-volume")
+            (label :text " ${source-volume}%" :unindent false :class "source-volume")
+            (label :class {mute-status ? "muted_source-volume" : "source-volume"} 
+                   :text {mute-status ? " ": " "}
+            )
         )
     )
 )
 
 (defwidget datetime []
-    (box :class "datetime"
+    (box :class "datetime" 
         (label :text time)
     )
 )
-
-(defwidget workspaces []
-    (box :class "workspaces"
-        :orientation "h"
-        :space-evenly true
-        :halign "start"
-        :spacing 10
-        (button :onclick "wmctrl -s 0" 1)
-        (button :onclick "wmctrl -s 1" 2)
-        (button :onclick "wmctrl -s 2" 3)
-        (button :onclick "wmctrl -s 3" 4)
-        (button :onclick "wmctrl -s 4" 5)
-        (button :onclick "wmctrl -s 5" 6)
-        (button :onclick "wmctrl -s 6" 7)
-        (button :onclick "wmctrl -s 7" 8)
-        (button :onclick "wmctrl -s 8" 9)))
 
 (defpoll sink-volume :interval "1s"
     "pamixer --get-volume"
 )
 
 (defpoll source-volume :interval "1s"
-    ;; "scripts/getvol"
     "pamixer --default-source --get-volume"
 )
 
@@ -97,7 +81,8 @@
         :y "5px"
         :width "90%"
         :height "10px"
-        :anchor "top center")
+        :anchor "top center"
+    )
     :reserve (struts :side "top" :distance "4%")
     (bar)
 )
