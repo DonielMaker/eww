@@ -37,5 +37,11 @@ $git-delete: #914c54;
 
 .calender {
   background-color: $bg;
-  border-radius: 30px;
+}
+
+.cell {
+  border-color: #ff0000;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
 }

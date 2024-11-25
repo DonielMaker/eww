@@ -31,16 +31,15 @@ $red1: #db4b4b;
 $teal: #1abc9c;
 $terminal_black: #414868;
 $yellow: #e0af68;
-$git-add: #449dab;
-$git-change: #6183bb;
-$git-delete: #914c54;
+// $git-add: #449dab;
+// $git-change: #6183bb;
+// $git-delete: #914c54;
 
 .bar {
   background-color: $bg;
   color: $fg;
-  // padding: 10px;
   border-radius: 15px;
-  border-color: $bg_dark
+  border: 2px solid $bg_highlight;
 }
 
 .muted_source-volume {

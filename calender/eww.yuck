@@ -1,53 +1,45 @@
 (defwidget calender []
-    ;; (label :class "calender" 
-    ;;        :text "Hello World!"
-    ;; )
-    (box :class "calender" :orientation "v" :spacing 30 :space-evenly false
-        (box :orientation "h" :spacing 30 :space-evenly false
-
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
+    (box :class "calender" :orientation "v" :spacing 5
+        (box :orientation "h" :spacing 5 :class "row"
+            (label :text "1" :class "cell")
+            (label :text "2" :class "cell")
+            (label :text "3" :class "cell")
+            (label :text "4" :class "cell")
+            (label :text "5" :class "cell")
+            (label :text "6" :class "cell")
+            (label :text "7" :class "cell")
         )
-        (box :orientation "h" :spacing 30 :space-evenly false
-
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
+        (box :orientation "h" :spacing 5 :space-evenly false
+            (label :text "8" :class "cell")
+            (label :text "9" :class "cell")
+            (label :text "10" :class "cell")
+            (label :text "11" :class "cell")
+            (label :text "12" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
         )
-        (box :orientation "h" :spacing 30 :space-evenly false
-
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
+        (box :orientation "h" :spacing 5 :space-evenly false
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
         )
-        (box :orientation "h" :spacing 30 :space-evenly false
-
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
+        (box :orientation "h" :spacing 5 :space-evenly false
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
         )
-        (box :orientation "h" :spacing 30 :space-evenly false
-
-            (label :text "1")
-            (label :text "1")
-            (label :text "1")
+        (box :orientation "h" :spacing 5 :space-evenly false
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
+            (label :text "1" :class "cell")
         )
     )
 )
@@ -62,6 +54,6 @@
         :height "233px"
         ;; :anchor "top center")
         :anchor "left center")
-    :reserve (struts :side "top" :distance "4%")
+    ;; :reserve (struts :side "top" :distance "4%")
     (calender)
 )
