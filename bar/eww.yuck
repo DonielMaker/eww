@@ -45,7 +45,7 @@
             (label :text "${sink-volume}%  " :class "sink-volume")
             (label :text " ${source-volume}% " :unindent false :class "source-volume")
             (label :class {mute-status ? "muted_source-volume" : "source-volume"} 
-                   :text {mute-status ? " ": " "}
+                    :text " "
             )
         )
     )
