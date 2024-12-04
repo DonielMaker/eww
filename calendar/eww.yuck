@@ -1,0 +1,33 @@
+;; (defwidget calender []
+;;     (calendar
+;;         :year 2024 
+;;         :month 11
+;;         :show-day-names false
+;;     )
+;; )
+
+(defwidget calender []
+    (box :class "weekdays"
+        (label :text "Mo")
+        (label :text "Tu")
+        (label :text "We")
+        (label :text "Th")
+        (label :text "Fr")
+        (label :text "Sa")
+        (label :text "Su")
+    )
+)
+
+(defwindow calender 
+    :monitor 0
+    :windowtype "dock"
+    :geometry (geometry 
+        :x "20%"
+        :y "60px"
+        :width "233px"
+        :height "233px"
+        :anchor "left center")
+        ;; :anchor "left center")
+    ;; :reserve (struts :side "top" :distance "4%")
+    (calender)
+)

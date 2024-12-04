@@ -4,7 +4,7 @@
 
 $bg: #24283b;
 $bg_dark: #1f2335;
-$bg_highlight: #292e42;
+$bg_highlight: #2F334C;
 $blue: #7aa2f7;
 $blue0: #3d59a1;
 $blue1: #2ac3de;
@@ -37,11 +37,12 @@ $git-delete: #914c54;
 
 .calender {
   background-color: $bg;
+  border: 2px solid $bg_highlight;
+  border-radius: 20px;
+  opacity: 0.9;
+  font-size: 28px;
 }
 
-.cell {
-  border-color: #ff0000;
-  border-style: solid;
-  border-width: 1px;
-  padding: 10px;
+.weekdays {
+  font-size: 14px;
 }
