@@ -3,7 +3,7 @@
 }
 
 $bg: #24283b;
-$bg_dark: #1f2335;
+// $bg_dark: #1f2335; 
 $bg_highlight: #2F334C;
 $blue: #7aa2f7;
 $blue0: #3d59a1;
@@ -12,13 +12,13 @@ $blue2: #0db9d7;
 $blue5: #89ddff;
 $blue6: #b4f9f8;
 $blue7: #394b70;
-$comment: #565f89;
+// $comment: #565f89; 
 $cyan: #7dcfff;
 $dark3: #545c7e;
 $dark5: #737aa2;
 $fg: #c0caf5;
 $fg_dark: #a9b1d6;
-$fg_gutter: #3b4261;
+// $fg_gutter: #3b4261; 
 $green: #9ece6a;
 $green1: #73daca;
 $green2: #41a6b5;
@@ -35,6 +35,8 @@ $yellow: #e0af68;
 // $git-change: #6183bb;
 // $git-delete: #914c54;
 
+// 
+
 .bar {
   background-color: $bg;
   color: $fg;
@@ -42,30 +44,25 @@ $yellow: #e0af68;
   border: 2px solid $bg_highlight;
 }
 
-.muted_source-volume {
-  color: $red1;
-}
-
-.source-volume {
-  color: $blue;
-}
-
-.datetime {
-  font-size: 16px;
-}
-
-.pulseaudio {
-  padding: 10px;
-}
-
 button {
   border-radius: 20px;
 }
 
 button:hover {
-  border-radius: 20px;
   background-color: $bg_highlight;
   transition: 0.7s;
+}
+
+.card {
+  padding: 10px;
+}
+
+.battery {
+  color: $green1;
+}
+
+.datetime {
+  font-size: 16px;
 }
 
 .shutdown {
@@ -76,6 +73,19 @@ button:hover {
   color: $yellow;
 }
 
-.sink-volume {
-  color: $cyan;
+//  AUDIO
+.muted {
+  color: $red1;
 }
+
+.sink {
+  .unmuted, .volume {
+    color: $cyan;
+  }
+} 
+
+.source {
+  .unmuted, .volume {
+    color: $blue;
+  }
+} 

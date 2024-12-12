@@ -21,6 +21,7 @@
 
 (defwidget right []
     (box :class "right" :orientation "h" :space-evenly false :halign "end"
+        (battery)
         (pulseaudio)
     )
 )
@@ -36,17 +37,26 @@
     )
 )
 
+(defwidget battery []
+    (label :text "${bat-cap}% " :class "battery card")
+)
+
 (defwidget pulseaudio [] 
     (button :class "pulseaudio" 
             :orientation "h" 
             :halign "center"
             :onclick "pavucontrol &"
         (box :space-evenly false
-            (label :text "${sink-volume}%  " :class "sink-volume")
-            (label :text " ${source-volume}% " :unindent false :class "source-volume")
-            (label :class {mute-status ? "muted_source-volume" : "source-volume"} 
-                    :text " "
+            (box :class "sink card" :space-evenly false
+                (label :text "${sink-volume}% " :class "volume")
+                (label :class {sink-mute ? "muted" : "unmuted"} :text "")
             )
+            (box :class "source card" :space-evenly false
+                (label :text " ${source-volume}% " :class "volume")
+                (label :class {source-mute ? "muted" : "unmuted"} :text "")
+            )
+
+
         )
     )
 )
@@ -57,21 +67,17 @@
     )
 )
 
-(defpoll sink-volume :interval "1s"
-    "pamixer --get-volume"
-)
+(defpoll sink-volume :interval "1s" "pamixer --get-volume")
 
-(defpoll source-volume :interval "1s"
-    "pamixer --default-source --get-volume"
-)
+(defpoll source-volume :interval "1s" "pamixer --default-source --get-volume")
 
-(defpoll mute-status :interval "0.1s"
-    "pamixer --default-source --get-mute" 
-)
+(defpoll sink-mute :interval "0.3s" "pamixer --get-mute" )
 
-(defpoll time :interval "10s"
-    "date '+%a %d %b, %H:%M'"
-)
+(defpoll source-mute :interval "0.3s" "pamixer --default-source --get-mute" )
+
+(defpoll time :interval "3s" "date '+%a %d %b, %H:%M'")
+
+(defpoll bat-cap :interval "60s" "cat /sys/class/power_supply/BAT0/capacity")
 
 (defwindow bar
     :monitor 0
