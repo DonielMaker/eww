@@ -1,20 +1,12 @@
-;; (defwidget calender []
-;;     (calendar
-;;         :year 2024 
-;;         :month 11
-;;         :show-day-names false
-;;     )
-;; )
+(defpoll month :interval "60m" "date '*%b'")
+(defpoll year :interval "60m" "date '*%y'")
 
 (defwidget calender []
-    (box :class "weekdays"
-        (label :text "Mo")
-        (label :text "Tu")
-        (label :text "We")
-        (label :text "Th")
-        (label :text "Fr")
-        (label :text "Sa")
-        (label :text "Su")
+    (eventbox :onhoverlost "eww close -c ~/.config/eww/calendar/ calender"
+        (calendar :class "cal"
+            :year year 
+            :month month
+        )
     )
 )
 
@@ -22,7 +14,7 @@
     :monitor 0
     :windowtype "dock"
     :geometry (geometry 
-        :x "20%"
+        :x "80%"
         :y "60px"
         :width "233px"
         :height "233px"

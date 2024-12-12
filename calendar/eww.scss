@@ -35,14 +35,20 @@ $git-add: #449dab;
 $git-change: #6183bb;
 $git-delete: #914c54;
 
-.calender {
+.cal {
   background-color: $bg;
-  border: 2px solid $bg_highlight;
+  /* border: 2px solid $bg_highlight; */
   border-radius: 20px;
   opacity: 0.9;
-  font-size: 28px;
+  font-size: 20px;
+  padding: 5px;
+
+  .header {
+    color: $green;
+
+    .day-Mon {
+      color: $blue;
+    }
+  }
 }
 
-.weekdays {
-  font-size: 14px;
-}
