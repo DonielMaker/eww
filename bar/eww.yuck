@@ -38,7 +38,10 @@
 )
 
 (defwidget battery []
-    (label :text "${bat-cap}% " :class "battery card")
+    (box :space-evenly false :class "card battery"
+        (label :text "${bat-cap}% ")
+        (label :text {charging == "Charging" ? "󰂄" : "󰁹"})
+    )
 )
 
 (defwidget pulseaudio [] 
@@ -55,8 +58,6 @@
                 (label :text " ${source-volume}% " :class "volume")
                 (label :class {source-mute ? "muted" : "unmuted"} :text "")
             )
-
-
         )
     )
 )
@@ -78,6 +79,8 @@
 (defpoll time :interval "3s" "date '+%a %d %b, %H:%M'")
 
 (defpoll bat-cap :interval "60s" "cat /sys/class/power_supply/BAT0/capacity")
+
+(defpoll charging :interval "1s" "cat /sys/class/power_supply/BAT0/status")
 
 (defwindow bar
     :monitor 0
