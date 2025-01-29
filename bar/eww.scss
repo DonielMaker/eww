@@ -37,29 +37,29 @@ $yellow: #e0af68;
 
 // 
 
-.workspace {
-  background-color: $bg_highlight;
-  border-radius: 4px;
-}
-
-.active {
-  background-color: $fg;
-}
-
 .bar {
   background-color: $bg;
   color: $fg;
   border-radius: 15px;
   border: 2px solid $bg_highlight;
+
+  button {
+    border-radius: 20px;
+
+    &:hover {
+      background-color: $bg_highlight;
+      transition: 0.7s;
+    }
+  }
 }
 
-button {
-  border-radius: 20px;
-}
-
-button:hover {
+.workspace {
   background-color: $bg_highlight;
-  transition: 0.7s;
+  border-radius: 4px;
+
+  &.active {
+    background-color: $fg;
+  }
 }
 
 .card {
