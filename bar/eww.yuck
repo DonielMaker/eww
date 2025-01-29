@@ -1,3 +1,20 @@
+(defvar eww "eww -c $HOME/.config/eww/bar")
+
+(defvar show-cal false)
+(defpoll active_workspace :interval "0.5s" "hyprctl activeworkspace -j | jq '.id'")
+
+(defpoll sink-volume :interval "1s" "pamixer --get-volume")
+(defpoll source-volume :interval "1s" "pamixer --default-source --get-volume")
+(defpoll sink-mute :interval "0.3s" "pamixer --get-mute" )
+(defpoll source-mute :interval "0.3s" "pamixer --default-source --get-mute" )
+
+(defpoll time :interval "3s" "date '+%a %d %b, %H:%M'")
+(defpoll month :interval "60m" "date '*%b'")
+(defpoll year :interval "60m" "date '*%y'")
+
+(defpoll bat-cap :interval "60s" "cat /sys/class/power_supply/BAT0/capacity")
+(defpoll charging :interval "1s" "cat /sys/class/power_supply/BAT0/status")
+
 (defwidget bar []
     (centerbox :orientation "h"
         (left)
@@ -10,19 +27,7 @@
     (box :class "left"
          :space-evenly false
         (powermenu)
-    )
-)
-
-(defwidget center []
-    (box :class "center"
-        (datetime)
-    )
-)
-
-(defwidget right []
-    (box :class "right" :orientation "h" :space-evenly false :halign "end"
-        (battery)
-        (pulseaudio)
+        (workspaces)
     )
 )
 
@@ -34,6 +39,69 @@
         (button :onclick "reboot" :width 40
             (label :text "" :class "reboot")
         )
+    )
+)
+
+(defwidget workspaces []
+    (box :spacing 5 :style "padding: 10px 0px 10px 10px" 
+        (workspace :workspace 1)
+        (workspace :workspace 2)
+        (workspace :workspace 3)
+        (workspace :workspace 4)
+        (workspace :workspace 5)
+        (workspace :workspace 6)
+        (workspace :workspace 7)
+        (workspace :workspace 8)
+        (workspace :workspace 9)
+        (workspace :workspace 10)
+    )
+)
+
+(defwidget workspace [workspace]
+    (box :width 20 :halign "center" :class {active_workspace == workspace ? "workspace active" : "workspace"})
+)
+
+(defwidget center []
+    (box :class "center"
+            (datetime)
+    )
+)
+
+(defwidget datetime []
+    (eventbox :onclick "${eww} update show-cal=true" 
+        (label :text time)
+    )
+)
+
+(defwidget calender []
+    (eventbox :onhoverlost "${eww} update show-cal=false" 
+        (revealer :reveal show-cal
+            (calendar :class "cal"
+                :year year 
+                :month month
+            )
+        )
+    )
+)
+
+(defwindow calender
+    :monitor 0
+    :windowtype "dock"
+    :geometry (
+        geometry 
+        :x "0%"
+        :y "60px"
+        :width "10%"
+        :anchor "top center"
+    )
+    :reserve (struts :side "top" :distance "4%")
+    (calender)
+)
+
+(defwidget right []
+    (box :class "right" :orientation "h" :space-evenly false :halign "end"
+        ;; (battery)
+        (pulseaudio)
     )
 )
 
@@ -61,26 +129,6 @@
         )
     )
 )
-
-(defwidget datetime []
-    (box :class "datetime" 
-        (label :text time)
-    )
-)
-
-(defpoll sink-volume :interval "1s" "pamixer --get-volume")
-
-(defpoll source-volume :interval "1s" "pamixer --default-source --get-volume")
-
-(defpoll sink-mute :interval "0.3s" "pamixer --get-mute" )
-
-(defpoll source-mute :interval "0.3s" "pamixer --default-source --get-mute" )
-
-(defpoll time :interval "3s" "date '+%a %d %b, %H:%M'")
-
-(defpoll bat-cap :interval "60s" "cat /sys/class/power_supply/BAT0/capacity")
-
-(defpoll charging :interval "1s" "cat /sys/class/power_supply/BAT0/status")
 
 (defwindow bar
     :monitor 0

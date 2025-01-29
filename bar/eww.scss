@@ -37,6 +37,15 @@ $yellow: #e0af68;
 
 // 
 
+.workspace {
+  background-color: $bg_highlight;
+  border-radius: 4px;
+}
+
+.active {
+  background-color: $fg;
+}
+
 .bar {
   background-color: $bg;
   color: $fg;
@@ -89,3 +98,21 @@ button:hover {
     color: $blue;
   }
 } 
+
+.cal {
+  background-color: $bg;
+  border: 2px solid $bg_highlight;
+  border-radius: 20px;
+  opacity: 0.95;
+  font-size: 18px;
+  padding: 5px;
+
+  .header {
+    color: $blue5;
+    border: none;
+  }
+
+  /* .button  { */
+  /*   background-color: red; */
+  /* } */
+}

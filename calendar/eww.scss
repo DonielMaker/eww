@@ -37,18 +37,18 @@ $git-delete: #914c54;
 
 .cal {
   background-color: $bg;
-  /* border: 2px solid $bg_highlight; */
+  border: 2px solid $bg_highlight;
   border-radius: 20px;
   opacity: 0.9;
-  font-size: 20px;
+  font-size: 18px;
   padding: 5px;
 
   .header {
-    color: $green;
-
-    .day-Mon {
-      color: $blue;
-    }
+    color: $blue5;
+    border: none;
   }
-}
 
+  /* .button  { */
+  /*   background-color: red; */
+  /* } */
+}
