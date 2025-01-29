@@ -1,6 +1,5 @@
 (defvar eww "eww -c $HOME/.config/eww/bar")
 
-(defvar show-cal false)
 (defpoll active_workspace :interval "0.5s" "hyprctl activeworkspace -j | jq '.id'")
 
 (defpoll sink-volume :interval "1s" "pamixer --get-volume")
@@ -68,19 +67,16 @@
 )
 
 (defwidget datetime []
-    (eventbox :onclick "${eww} update show-cal=true" 
+    (eventbox :onclick "${eww} open calender"
         (label :text time)
     )
 )
 
 (defwidget calender []
-    (eventbox :onhoverlost "${eww} update show-cal=false" :active show-cal 
-        (revealer :reveal show-cal
-            (calendar :class "cal"
-                :year year 
-                :month month
-                :visible show-cal
-            )
+    (eventbox :onhoverlost "${eww} close calender"
+        (calendar :class "cal"
+            :year year 
+            :month month
         )
     )
 )
