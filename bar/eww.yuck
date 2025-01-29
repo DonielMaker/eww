@@ -74,11 +74,12 @@
 )
 
 (defwidget calender []
-    (eventbox :onhoverlost "${eww} update show-cal=false" 
+    (eventbox :onhoverlost "${eww} update show-cal=false" :active show-cal 
         (revealer :reveal show-cal
             (calendar :class "cal"
                 :year year 
                 :month month
+                :visible show-cal
             )
         )
     )
