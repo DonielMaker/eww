@@ -40,7 +40,7 @@
 )
 
 (defwidget workspaces []
-    (box :spacing 5 :style "padding: 10px 0px 10px 10px" 
+    (box :spacing 5 :style "padding: 16px 0px 16px 10px" 
         (workspace :workspace 1)
         (workspace :workspace 2)
         (workspace :workspace 3)
@@ -55,7 +55,7 @@
 )
 
 (defwidget workspace [workspace]
-    (box :width 20 :halign "center" :class {active_workspace == workspace ? "workspace active" : "workspace"})
+    (box :width 7 :halign "center" :class {active_workspace == workspace ? "workspace active" : "workspace"})
 )
 
 (defwidget center []
