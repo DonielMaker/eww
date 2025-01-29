@@ -12,9 +12,6 @@
 (defpoll month :interval "60m" "date '*%b'")
 (defpoll year :interval "60m" "date '*%y'")
 
-(defpoll bat-cap :interval "60s" "cat /sys/class/power_supply/BAT0/capacity")
-(defpoll charging :interval "1s" "cat /sys/class/power_supply/BAT0/status")
-
 (defwidget bar []
     (centerbox :orientation "h"
         (left)
@@ -101,15 +98,15 @@
 
 (defwidget right []
     (box :class "right" :orientation "h" :space-evenly false :halign "end"
-        ;; (battery)
+        (battery)
         (pulseaudio)
     )
 )
 
 (defwidget battery []
     (box :space-evenly false :class "card battery"
-        (label :text "${bat-cap}% ")
-        (label :text {charging == "Charging" ? "󰂄" : "󰁹"})
+        (label :text "${EWW_BATTERY.BAT0.capacity}% ")
+        (label :text {EWW_BATTERY.BAT0.status == "Charging" ? "󰂄" : "󰁹"})
     )
 )
 
