@@ -127,6 +127,7 @@
 (defwindow bar
     :monitor 0
     :stacking "fg"
+    :exclusive true
     :geometry (
         geometry 
         :y "5px"
