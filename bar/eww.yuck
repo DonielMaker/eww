@@ -133,6 +133,7 @@
         :y "5px"
         :width "90%"
         :anchor "top center"
+        :exclusive true
     )
     :reserve (struts :side "top" :distance "4%")
     (bar)
