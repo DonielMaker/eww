@@ -59,7 +59,7 @@
 
 (defwidget center []
     (box :class "center"
-            (datetime)
+        (datetime)
     )
 )
 
@@ -80,7 +80,7 @@
 
 (defwindow calender
     :monitor 0
-    :windowtype "dock"
+    :stacking "fg"
     :geometry (
         geometry 
         :x "0%"
@@ -88,21 +88,13 @@
         :width "10%"
         :anchor "top center"
     )
-    :reserve (struts :side "top" :distance "4%")
     (calender)
 )
 
 (defwidget right []
     (box :class "right" :orientation "h" :space-evenly false :halign "end"
-        (battery)
+        ;; (battery)
         (pulseaudio)
-    )
-)
-
-(defwidget battery []
-    (box :space-evenly false :class "card battery"
-        (label :text "${EWW_BATTERY.BAT0.capacity}% ")
-        (label :text {EWW_BATTERY.BAT0.status == "Charging" ? "󰂄" : "󰁹"})
     )
 )
 
