@@ -2,10 +2,13 @@
 
 (defpoll active_workspace :interval "0.5s" "hyprctl activeworkspace -j | jq '.id'")
 
+(defvar sink-reveal false)
 (defpoll sink-volume :interval "1s" "pamixer --get-volume")
+(defpoll sink-muted :interval "0.3s" "pamixer --get-mute" )
+
+(defvar source-reveal false)
 (defpoll source-volume :interval "1s" "pamixer --default-source --get-volume")
-(defpoll sink-mute :interval "0.3s" "pamixer --get-mute" )
-(defpoll source-mute :interval "0.3s" "pamixer --default-source --get-mute" )
+(defpoll source-muted :interval "0.3s" "pamixer --default-source --get-mute" )
 
 (defpoll time :interval "3s" "date '+%a %d %b, %H:%M'")
 (defpoll month :interval "60m" "date '*%b'")
@@ -54,7 +57,7 @@
 )
 
 (defwidget workspace [workspace]
-    (box :width 7 :halign "center" :class {active_workspace == workspace ? "workspace active" : "workspace"})
+    (box :height 7 :width 7 :halign "center" :class {active_workspace == workspace ? "workspace active" : "workspace"})
 )
 
 (defwidget center []
@@ -99,18 +102,40 @@
 )
 
 (defwidget pulseaudio [] 
-    (button :class "pulseaudio" 
-            :orientation "h" 
-            :halign "center"
-            :onclick "pavucontrol &"
-        (box :space-evenly false
-            (box :class "sink card" :space-evenly false
-                (label :text "${sink-volume}% " :class "volume")
-                (label :class {sink-mute ? "muted" : "unmuted"} :text "")
+    (box :space-evenly false
+        (box :class "sink" :space-evenly false :halign "end"
+            (eventbox :onhover "${eww} update sink-reveal=true" :onhoverlost "${eww} update sink-reveal=false"
+                (box :space-evenly false
+                    (revealer :reveal sink-reveal :transition "slideright"
+                        (scale :class "volume" 
+                               :min 0 
+                               :max 101
+                               :width 150
+                               :value sink-volume 
+                               :onchange "pamixer --set-volume {}"
+                        )
+                    )
+                    (label :text "${sink-volume}%" :class "volume")
+                )
             )
-            (box :class "source card" :space-evenly false
-                (label :text " ${source-volume}% " :class "volume")
-                (label :class {source-mute ? "muted" : "unmuted"} :text "")
+            (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
+        )
+        (box :class "source" :space-evenly false :halign "end"
+            (label :text "|  ")
+            (eventbox :onhover "${eww} update source-reveal=true" :onhoverlost "${eww} update source-reveal=false"
+                (box :space-evenly false
+                    (revealer :reveal source-reveal :transition "slideright"
+                        (scale :class "volume" 
+                               :min 0 
+                               :max 101
+                               :width 150
+                               :value source-volume 
+                               :onchange "pamixer --default-source --set-volume {}"
+                        )
+                    )
+                    (label :text "${source-volume}%" :class "volume")
+                    (button :width 40 :onclick "pavucontrol &" (label :text "" :class {source-muted ? "muted" : "unmuted"}))
+                )
             )
         )
     )
