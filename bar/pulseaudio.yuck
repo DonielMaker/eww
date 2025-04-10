@@ -13,9 +13,9 @@
                         )
                     )
                     (label :text "${sink-volume}%" :class "volume")
+                    (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
                 )
             )
-            (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
         )
         (box :class "source" :space-evenly false :halign "end"
             (label :text "|  ")
