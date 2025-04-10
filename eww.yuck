@@ -1,6 +1,6 @@
 (include "./pulseaudio.yuck")
 
-(defvar eww "eww -c $HOME/.config/eww/bar")
+(defvar eww "eww -c $HOME/.config/eww")
 
 (defpoll active_workspace :interval "0.5s" "hyprctl activeworkspace -j | jq '.id'")
 

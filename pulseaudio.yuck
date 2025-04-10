@@ -12,7 +12,7 @@
                                :onchange "pamixer --set-volume {}"
                         )
                     )
-                    (label :text "${sink-volume}%" :class "volume")
+                    (eventbox :onscroll "./scroll.sh {}" (label :text "${sink-volume}%" :class "volume"))
                     (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
                 )
             )
@@ -30,7 +30,7 @@
                                :onchange "pamixer --default-source --set-volume {}"
                         )
                     )
-                    (label :text "${source-volume}%" :class "volume")
+                    (eventbox :onscroll "./scroll.sh {} --default-source" (label :text "${source-volume}%" :class "volume"))
                     (button :width 40 :onclick "pavucontrol &" (label :text "" :class {source-muted ? "muted" : "unmuted"}))
                 )
             )
