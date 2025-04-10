@@ -1,0 +1,40 @@
+(defwidget pulseaudio [] 
+    (box :space-evenly false
+        (box :class "sink" :space-evenly false :halign "end"
+            (eventbox :onhover "${eww} update sink-reveal=true" :onhoverlost "${eww} update sink-reveal=false"
+                (box :space-evenly false
+                    (revealer :reveal sink-reveal :transition "slideright"
+                        (scale :class "volume" 
+                               :min 0 
+                               :max 101
+                               :width 150
+                               :value sink-volume 
+                               :onchange "pamixer --set-volume {}"
+                        )
+                    )
+                    (label :text "${sink-volume}%" :class "volume")
+                )
+            )
+            (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
+        )
+        (box :class "source" :space-evenly false :halign "end"
+            (label :text "|  ")
+            (eventbox :onhover "${eww} update source-reveal=true" :onhoverlost "${eww} update source-reveal=false"
+                (box :space-evenly false
+                    (revealer :reveal source-reveal :transition "slideright"
+                        (scale :class "volume" 
+                               :min 0 
+                               :max 101
+                               :width 150
+                               :value source-volume 
+                               :onchange "pamixer --default-source --set-volume {}"
+                        )
+                    )
+                    (label :text "${source-volume}%" :class "volume")
+                    (button :width 40 :onclick "pavucontrol &" (label :text "" :class {source-muted ? "muted" : "unmuted"}))
+                )
+            )
+        )
+    )
+)
+
