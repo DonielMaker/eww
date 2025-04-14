@@ -1,5 +1,5 @@
 (defwidget pulseaudio [] 
-    (box :space-evenly false
+    (box :space-evenly false 
         (box :class "sink" :space-evenly false :halign "end"
             (eventbox :onhover "${eww} update sink-reveal=true" :onhoverlost "${eww} update sink-reveal=false"
                 (box :space-evenly false

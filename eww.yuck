@@ -25,8 +25,7 @@
 )
 
 (defwidget left []
-    (box :class "left"
-         :space-evenly false
+    (box :space-evenly false
         (powermenu)
         (workspaces)
     )
@@ -63,7 +62,7 @@
 )
 
 (defwidget center []
-    (box :class "center"
+    (box
         (datetime)
     )
 )
@@ -97,8 +96,8 @@
 )
 
 (defwidget right []
-    (box :class "right" :orientation "h" :space-evenly false :halign "end"
-        ;; (battery)
+    (box :space-evenly false :spacing 870
+        (systray :class "tray")
         (pulseaudio)
     )
 )
