@@ -62,7 +62,7 @@
 )
 
 (defwidget center []
-    (box
+    (box :space-evenly false
         (datetime)
     )
 )
@@ -96,7 +96,7 @@
 )
 
 (defwidget right []
-    (box :space-evenly false :spacing 870
+    (box :space-evenly false :halign "end" :spacing 10
         (systray :class "tray")
         (pulseaudio)
     )
