@@ -37,14 +37,20 @@
     ;;     )
     ;; )
     (box :space-evenly false 
-        (box :class "sink" :space-evenly false
-            (eventbox :onscroll "./scroll.sh {}" (label :text "${sink-volume}%" :class "unmuted"))
-            (button :width 40 :onclick "pavucontrol &" (label :class "unmuted" :text "" :xalign "0.35"))
+        (eventbox :onscroll "./scroll.sh {}" :onclick "pavucontrol &" :class "sink button"
+            (box :space-evenly false
+                (label :text "${sink-volume}% " :class "unmuted")
+                (label :text " "  :class {sink-muted ? "muted" : "unmuted"})
+            )
         )
-        (box :class "source" :space-evenly false
-            (eventbox :onscroll "./scroll.sh {} --default-source" (label :text "${source-volume}%" :class "unmuted"))
-            (button :width 40 :onclick "pavucontrol &" (label :text "" :class {source-muted ? "muted" : "unmuted"}))
+        (label :text "  |  " :unindent false)
+        (eventbox :onscroll "./scroll.sh {}" :onclick "pavucontrol &" :class "source button"
+            (box :space-evenly false
+                (label :text "${source-volume}% " :class "unmuted")
+                (label :text " " :class {source-muted ? "muted" : "unmuted"})
+            )
         )
+        (label :text "  " :unindent false)
     )
 )
 

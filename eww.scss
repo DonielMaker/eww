@@ -55,6 +55,16 @@ button {
   }
 }
 
+button {
+  background-color: $bg;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: $bg_highlight;
+    transition: 0.7s;
+  }
+}
+
 .workspace {
   background-color: $bg_highlight;
   border-radius: 4px;

@@ -98,7 +98,20 @@
 (defwidget right []
     (box :space-evenly false :halign "end" :spacing 10
         (systray :class "tray")
+        (battery)
         (pulseaudio)
+    )
+)
+
+(defwidget battery []
+    (box :space-evenly false
+        (label :class "battery" :text 
+            {EWW_BATTERY.BAT0.status == "Charging" ?
+                "${EWW_BATTERY.BAT0.capacity}% 󰂄 " :
+                "${EWW_BATTERY.BAT0.capacity}% 󰁹 "
+            }
+        )
+        (label :text " | " :unindent false)
     )
 )
 
